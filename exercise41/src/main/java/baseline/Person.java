@@ -7,8 +7,8 @@ package baseline;
 
 public class Person implements Comparable<Person>{
 
-    private String firstName;
-    private String lastName;
+    private final String firstName;
+    private final String lastName;
 
     public Person(String name) {
         // Split name to fullName

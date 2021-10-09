@@ -11,6 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Solution41 {
@@ -49,22 +50,21 @@ public class Solution41 {
         return people;
     }
 
-    private String output(ArrayList<Person> names, String fileOutputName) throws IOException {
+    public String output(List<Person> names, String fileOutputName) throws IOException {
         // Setup File Output
         FileWriter output = new FileWriter("src/main/resources/" + fileOutputName);
-        String fullTable = "";
+        StringBuilder fullTable = new StringBuilder();
 
         // print the array list size
-        fullTable += ("Total of " + names.size() + " names\n-----------------");
+        fullTable.append("Total of ").append(names.size()).append(" names\n-----------------");
 
         // runs through each of the arrayList values and returns the full string.
-        for(int i = 0; i < names.size(); i++)
-            fullTable += ("\n" + names.get(i).toString());
+        for (Person name : names) fullTable.append("\n").append(name.toString());
 
-        output.append(fullTable);
+        output.append(fullTable.toString());
         output.close();
 
-        return fullTable;
+        return fullTable.toString();
     }
 
 }
