@@ -19,6 +19,7 @@ class Solution41Test {
         app = new Solution41();
     }
 
+
     @Test
     void testReadLine() {
         String thisLine = app.readLine("exercise41_input.txt", 0);

@@ -7,6 +7,7 @@ public class Person implements Comparable<Person>{
 
     public Person(String name) {
         // Split name to fullName
+
         // firstName = fullName first part
         // lastName = fullName second part
     }

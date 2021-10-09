@@ -8,6 +8,7 @@ class Solution41 {
     +printHashmapIndexToFile(String): String
     +printFullFile(ArrayList<String>): String
 
+
     'attributes
     -fileName: String
     -nameCount: int

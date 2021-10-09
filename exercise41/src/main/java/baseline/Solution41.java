@@ -36,6 +36,7 @@ public class Solution41 {
     public ArrayList<Person> parsePeople(String fileName) {
         // Setup File Input
         // Create ArrayList of Persons
+
         // while file has next line
             // people.add(new Person(in.nextLine()))
         // return people
