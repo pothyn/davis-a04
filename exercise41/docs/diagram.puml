@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+class Solution41 {
+    'behaviors
+    +readLine(fileName, thisLine): String
+    +addToArrayList(String): void
+    +printHashmapIndexToFile(String): String
+    +printFullFile(ArrayList<String>): String
+
+    'attributes
+    -fileName: String
+    -nameCount: int
+
+}
+
+class exercise41_input{
+    +textData
+}
+
+class exercise41_output{
+    +outputData
+}
+
+@enduml
