@@ -5,49 +5,66 @@
 
 package baseline;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Solution41 {
 
-    private int count;
+    public static void main(String[] args) throws IOException {
 
-    public static void main(String[] args) {
+        Solution41 app = new Solution41();
 
-        String fileName;
+        String fileInputName;
+        String fileOutputName;
 
         // set fileName equal to the file in question
+        fileInputName = "exercise41_input.txt";
+        fileOutputName = "exercise41_output.txt";
 
-        // ArrayList<Person> names = parsePeople(fileName);
+        ArrayList<Person> names = app.parsePeople(fileInputName);
 
         // sort arrayList through given commands
-        // Collections.sort(names);
+        Collections.sort(names);
 
-        // output(names);
+        app.output(names, fileOutputName);
 
     }
 
-    public ArrayList<String> splitText(String fileName) {
-        // Split array list by "\n"
-        // return split array list
-        return null;
-    }
-
-    public ArrayList<Person> parsePeople(String fileName) {
+    public ArrayList<Person> parsePeople(String fileInputName) throws FileNotFoundException {
         // Setup File Input
+        File input = new File(ClassLoader.getSystemResource(fileInputName).getFile());
+        Scanner in = new Scanner(input);
+
         // Create ArrayList of Persons
+        ArrayList<Person> people = new ArrayList<>();
 
         // while file has next line
-            // people.add(new Person(in.nextLine()))
-        // return people
-        return null;
+        while(in.hasNextLine())
+            people.add(new Person(in.nextLine()));
+        return people;
     }
 
-    private String output(ArrayList<String> names) {
+    private String output(ArrayList<Person> names, String fileOutputName) throws IOException {
         // Setup File Output
+        FileWriter output = new FileWriter("src/main/resources/" + fileOutputName);
+        String fullTable = "";
+
         // print the array list size
+        fullTable += ("Total of " + names.size() + " names\n-----------------");
+
         // runs through each of the arrayList values and returns the full string.
-        return null;
+        for(int i = 0; i < names.size(); i++)
+            fullTable += ("\n" + names.get(i).toString());
+
+        output.append(fullTable);
+        output.close();
+
+        return fullTable;
     }
 
 }
