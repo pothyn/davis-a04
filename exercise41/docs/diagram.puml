@@ -15,6 +15,15 @@ class Solution41 {
 
 }
 
+class Person {
+    -firstName: String
+    -lastName: String
+
+    +Person(String name)
+    +toString(Person person): String
+    +compareTo(): int
+}
+
 class exercise41_input{
     +textData
 }
