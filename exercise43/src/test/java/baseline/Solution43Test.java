@@ -1,3 +1,8 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 4 Solutions
+ *  Copyright 2021 Hunter Davis
+ */
+
 package baseline;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -5,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,7 +25,7 @@ class Solution43Test {
     }
 
     @Test
-    void testGenerateWebsites() {
+    void testGenerateWebsites() throws IOException {
         // run generateWebsites() and check each file exists
         app.generateWebsites("awesomeco", true, true);
 
@@ -29,7 +35,7 @@ class Solution43Test {
     }
 
     @Test
-    void testWriteToIndex() throws FileNotFoundException {
+    void testWriteToIndex() throws IOException {
         // check the contents of the index.html file match with preset
         app.writeToIndex("awesomeco", "Max Power");
 
@@ -46,4 +52,10 @@ class Solution43Test {
         assertEquals("<meta", meta);
     }
 
+    @Test
+    void testGenerateDirectory() throws IOException {
+        app.generateDirectory("awesomeco/js");
+        File file = new File("/website/awesomeco/js");
+        assertTrue(file.exists());
+    }
 }
