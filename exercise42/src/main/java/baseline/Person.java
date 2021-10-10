@@ -5,7 +5,7 @@
 
 package baseline;
 
-public class Person implements Comparable<Person>{
+public class Person{
 
     private final String firstName;
     private final String lastName;
@@ -13,27 +13,18 @@ public class Person implements Comparable<Person>{
 
     public Person(String name) {
         // Split name to fullName
-        String[] fullName = name.split(", ");
+        String[] fullName = name.split(",");
 
         // lastName = fullName first part
+        lastName = fullName[0];
         // firstName = fullName second part
+        firstName = fullName[1];
         // salary = fullName third part
-    }
-
-    @Override
-    public int compareTo(Person p) {
-        int lastNameCompare;
-
-        // check compareTo of last names
-
-        // if compareTo for last names is 0
-            // lastNameCompare = this first name compareTo p first name
-
-        return lastNameCompare;
+        salary = fullName[2];
     }
 
     @Override
     public String toString() {
-        return lastName + ", " + firstName;
+        return String.format("%8s %8s %8s", lastName, firstName, salary);
     }
 }

@@ -1,0 +1,7 @@
+
+Œ
+java:S1319'"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(×–´8Åã–±Æ/
+[
+java:S2095*"EUse try-with-resources or close this "Scanner" in a "finally" clause.(ú—÷
+]
+java:S20957"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(ªøÑ

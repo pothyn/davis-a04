@@ -11,11 +11,10 @@ import org.junit.jupiter.api.Test;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Solution41Test {
+class Solution42Test {
 
     Solution42 app;
     ArrayList<Person> testArrayList;
@@ -24,13 +23,13 @@ class Solution41Test {
     void init(){
         app = new Solution42();
         testArrayList = new ArrayList<>();
-        testArrayList.add(new Person("Johnson, Jim"));
-        testArrayList.add(new Person("Jones, Aaron"));
-        testArrayList.add(new Person("Jones, Chris"));
-        testArrayList.add(new Person("Ling, Mai"));
-        testArrayList.add(new Person("Swift, Geoffrey"));
-        testArrayList.add(new Person("Xiong, Fong"));
-        testArrayList.add(new Person("Zarnecki, Sabrina"));
+        testArrayList.add(new Person("Ling,Mai,55900"));
+        testArrayList.add(new Person("Johnson,Jim,56500"));
+        testArrayList.add(new Person("Jones,Aaron,46000"));
+        testArrayList.add(new Person("Jones,Chris,34500"));
+        testArrayList.add(new Person("Swift,Geoffrey,14200"));
+        testArrayList.add(new Person("Xiong,Fong,65000"));
+        testArrayList.add(new Person("Zarnecki,Sabrina,51500"));
     }
 
 
@@ -38,30 +37,31 @@ class Solution41Test {
     void testParsePeople() throws FileNotFoundException {
 
         ArrayList<Person> names;
-        names = app.parsePeople("exercise41_input.txt");
-        Collections.sort(names);
+        names = app.parsePeople("exercise42_input.txt");
 
         // the toString is reliant on the constructor, which is reliant on parsePeople()
         // therefore, proving this works proves parsePeople() works
         for(int i = 0; i < names.size(); i++) {
-            assertEquals(testArrayList.get(i).toString(),names.get(i).toString());
+            assertEquals(testArrayList.get(i).toString(), names.get(i).toString());
         }
     }
 
     @Test
     void testOutput() throws IOException {
         ArrayList<Person> names = app.parsePeople("exercise42_input.txt");
-        Collections.sort(names);
 
-        assertEquals("Last      First     Salary\n" +
-                "--------------------------\n" +
-                "Ling      Mai       55900\n" +
-                "Johnson   Jim       56500\n" +
-                "Jones     Aaron     46000\n" +
-                "Jones     Chris     34500\n" +
-                "Swift     Geoffrey  14200\n" +
-                "Xiong     Fong      65000\n" +
-                "Zarnecki  Sabrina   51500", app.output(names, "exercise41_output.txt"));
+        // This comes out as failed, but when clicking on <Click to see difference>
+        // there are 0 differences between the two.
+        assertEquals("""
+                    Last    First   Salary
+                --------------------------
+                    Ling      Mai    55900
+                 Johnson      Jim    56500
+                   Jones    Aaron    46000
+                   Jones    Chris    34500
+                   Swift Geoffrey    14200
+                   Xiong     Fong    65000
+                Zarnecki  Sabrina    51500""", app.output(names, "exercise42_output.txt"));
 
     }
 }
