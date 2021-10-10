@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-class Solution41 {
+class Solution42 {
     'behaviors
     +readLine(fileName, thisLine): String
     +addToArrayList(String): void
@@ -24,6 +24,6 @@ class Person {
     +compareTo(): int
 }
 
-Solution41 --|> Person
+Solution42 --|> Person
 
 @enduml
