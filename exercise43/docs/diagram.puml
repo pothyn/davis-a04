@@ -1,0 +1,19 @@
+@startuml
+
+class Solution43 {
+    'methods
+    -generateWebsites():
+    -addToWorkingDirectory(): void
+    -writeToIndex()
+
+    'attributes
+    -css: boolean
+    -js: boolean
+    -author: String
+    -websites: ArrayList<String>
+
+
+
+}
+
+@enduml
