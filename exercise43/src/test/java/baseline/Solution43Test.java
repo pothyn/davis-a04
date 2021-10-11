@@ -9,11 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class Solution43Test {
 
@@ -25,7 +25,7 @@ class Solution43Test {
     }
 
     @Test
-    void testGenerateWebsites() throws IOException {
+    void testGenerateWebsites() {
         // run generateWebsites() and check each file exists
         app.generateWebsites("awesomeco", true, true);
 
@@ -53,7 +53,7 @@ class Solution43Test {
     }
 
     @Test
-    void testGenerateDirectory() throws IOException {
+    void testGenerateDirectory() {
         app.generateDirectory("awesomeco/js");
         File file = new File("/website/awesomeco/js");
         assertTrue(file.exists());

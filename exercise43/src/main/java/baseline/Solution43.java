@@ -14,6 +14,8 @@ import static java.lang.System.exit;
 
 public class Solution43 {
 
+    private final String filePath = System.getProperty("user.dir") + "/website/";
+
     public static void main(String[] args) throws IOException {
 
         Scanner in = new Scanner(System.in);
@@ -26,16 +28,20 @@ public class Solution43 {
         boolean css;
 
         // read site name
+        System.out.println("Site name: ");
         siteName = in.nextLine();
 
         // read author
+        System.out.println("Author: ");
         author = in.nextLine();
 
         // prompt for folder for JavaScript (Y/N)
+        System.out.println("Do you want a folder for JavaScript? ");
         intake = in.nextLine();
         js = intake.equalsIgnoreCase("y");
 
         // prompt for folder for CSS (Y/N)
+        System.out.println("Do you want a folder for CSS? ");
         intake = in.nextLine();
         css = intake.equalsIgnoreCase("y");
 
@@ -45,7 +51,7 @@ public class Solution43 {
 
     }
 
-    public void generateWebsites(String siteName, boolean js, boolean css) throws IOException {
+    public void generateWebsites(String siteName, boolean js, boolean css) {
 
         // In each of the following statements, there shall be a print statement indicating that the task has been performed.
 
@@ -63,17 +69,13 @@ public class Solution43 {
         if(css)
             // Create new folder css inside siteName
             generateDirectory(siteName + "/css");
-
-
-        return;
-
     }
 
-    public boolean generateDirectory(String siteName) {
+    public void generateDirectory(String siteName) {
         // create new folder in website/siteName/
 
-        File theDir = new File(System.getProperty("user.dir") + "/website/"+siteName + "/");
-        boolean result = false;
+        File theDir = new File(filePath + siteName);
+        boolean result;
 
         theDir.mkdirs();
         result = theDir.exists();
@@ -82,14 +84,13 @@ public class Solution43 {
             System.out.println("File Created: " + "./website/"+siteName+"/");
         }
 
-        return result;
     }
 
-    public boolean generateFile(String siteName) throws IOException {
+    public void generateFile(String siteName) {
         // create new file in website/siteName/
 
-        File file = new File(System.getProperty("user.dir") + "/website/"+siteName);
-        boolean result = false;
+        File file = new File(filePath+siteName);
+        boolean result;
 
         try {
             file.createNewFile();
@@ -105,30 +106,28 @@ public class Solution43 {
             System.out.println("File Created: " + "./website/"+siteName);
         }
 
-        return result;
-
     }
 
     public void writeToIndex(String siteName, String author) throws IOException {
 
-        StringBuilder htmlData = new StringBuilder();
+        siteName += "/index.html";
 
         // Setup File Output
         // open index.html file
-        FileWriter output = new FileWriter("/website/" + siteName);
-        System.out.println(output);
+        FileWriter output = new FileWriter(filePath + siteName);
 
         // write <title> siteName <\title> and <meta> author <\meta>
-        htmlData.append("<title>"+siteName+"</title>\n")
-                .append("<meta name=\"author\" content=\""+author+">");
+        String htmlData = "<title>" + siteName + "</title>\n" +
+                "<head>\n" + "\t<meta name=\"author\" content=\"" + author + "\">\n" +
+                "</head>";
 
         // actually apply the string to the html file
-        output.append(htmlData);
+        output.write(htmlData);
 
         // close index.html file
         output.close();
 
-        return;
+
     }
 
 
