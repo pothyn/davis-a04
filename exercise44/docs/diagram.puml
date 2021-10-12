@@ -1,0 +1,32 @@
+@startuml
+
+class Solution44 {
+    'attributes
+    -in: Scanner
+    -fileName: File
+
+    'methods
+    +jsonToProduct(): ArrayList<Product>
+    +checkName(String name, ArrayList<Product>): int (index)
+    +takeNameInput(): String
+    +getProductInfo(): String
+
+}
+
+class Product {
+    'attributes
+    -name: String
+    -price: double
+    -quantity: int
+
+    'methods
+    +Product(String name, double price, int quantity)
+    +getName(): String
+    +getPrice(): double
+    +getQuantity(): int
+
+}
+
+Solution44 --* Product
+
+@enduml
