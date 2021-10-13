@@ -3,7 +3,6 @@ package baseline;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -17,7 +16,7 @@ class Solution44Test {
     @BeforeEach
     void init() {
 
-        app = new Solution44("exercise44_input.txt");
+        app = new Solution44("exercise44_input.json");
 
         products = new ArrayList<>();
         products.add(new Product("Widget", 25.0, 5));
