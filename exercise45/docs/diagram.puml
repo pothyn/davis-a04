@@ -1,0 +1,21 @@
+@startuml
+class Solution45 {
+
+    'variables
+    -fileInputName: String
+    -fileOutputName: String
+    -initialReplace: String
+    -finalReplace: String
+
+    'methods
+    +Solution45()
+    +replaceAndPrint()
+    +pullFromFile()
+    +replaceAll()
+    +printToFile()
+    +getIntake()
+    +setIntake()
+
+}
+
+@enduml
