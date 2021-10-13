@@ -7,9 +7,9 @@ package baseline;
 
 public class Product {
 
-    private String name;
-    private double price;
-    private int quantity;
+    private final String name;
+    private final double price;
+    private final int quantity;
 
     public Product(String name, double price, int quantity) {
 
