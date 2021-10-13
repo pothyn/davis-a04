@@ -1,7 +1,14 @@
+/*
+ *  UCF COP3330 Fall 2021 Assignment 4 Solutions
+ *  Copyright 2021 Hunter Davis
+ */
+
 package baseline;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,7 +25,7 @@ class Solution45Test {
     }
 
     @Test
-    void testPullFromFile() {
+    void testPullFromFile() throws IOException {
 
         app.pullFromFile();
 
@@ -44,7 +51,7 @@ class Solution45Test {
     }
 
     @Test
-    void testPrintToFile() {
+    void testPrintToFile() throws IOException {
 
         app.setIntake("One should never use the word \"use\" in writing. Use \"use\" instead.\n" +
                 "For example, \"She uses an IDE to write her Java programs\" instead of \"She\n" +
