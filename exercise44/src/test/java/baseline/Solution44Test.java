@@ -3,6 +3,8 @@ package baseline;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,8 +32,11 @@ class Solution44Test {
     }
 
     @Test
-    void testJsonToProduct() {
-        assertEquals(products, app.jsonToProduct());
+    void testJsonToProduct() throws IOException {
+
+            assertEquals(products.get(0).getName(), app.jsonToProduct().get(0).getName());
+            assertEquals(products.get(0).getPrice(), app.jsonToProduct().get(0).getPrice());
+            assertEquals(products.get(0).getQuantity(), app.jsonToProduct().get(0).getQuantity());
     }
 
     @Test

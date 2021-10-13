@@ -14,6 +14,9 @@ public class Product {
     public Product(String name, double price, int quantity) {
 
         // Set all private variables equal to these values
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
 
     }
 
