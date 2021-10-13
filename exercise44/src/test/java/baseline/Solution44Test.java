@@ -45,7 +45,7 @@ class Solution44Test {
 
     @Test
     void testGetProductInfo() {
-        assertEquals("Name: Thing\nPrice: 15.00\nQuantity: 5", app.getProductInfo(1, products));
+        assertEquals("Name: Thing\nPrice: 15.0\nQuantity: 5", app.getProductInfo(1, products));
     }
 
 }

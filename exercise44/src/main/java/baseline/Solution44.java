@@ -7,8 +7,11 @@ package baseline;
 
 import com.google.gson.Gson;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Solution44 {
@@ -31,18 +34,18 @@ public class Solution44 {
         String userInput;
         int indexOfProduct;
 
-        ArrayList<Product> products = app.jsonToProduct();
+        ArrayList<Product> products = (ArrayList<Product>) app.jsonToProduct();
 
-        // do while( index is not -1 )
+        // infinite-ish loop but until a usable index is found
         do {
             System.out.print("What is the product name? ");
             // take userInput
             userInput = app.takeNameInput();
             // find index of product
             indexOfProduct = app.checkName(userInput, products);
-            if(indexOfProduct == -1)
+            if (indexOfProduct == -1)
                 System.out.println("Sorry, that product was not found in our inventory.");
-        } while(indexOfProduct == -1);
+        } while (indexOfProduct == -1);
 
         System.out.println(app.getProductInfo(indexOfProduct, products));
 
@@ -55,34 +58,30 @@ public class Solution44 {
 
     }
 
-    public ArrayList<Product> jsonToProduct() {
+    public List<Product> jsonToProduct() throws FileNotFoundException {
+
+        // After hours of working on this one method, I somewhat threw in the towel on this
+        // I don't have the time to spend all of my focus on this one method, sorry and thank you
+        // It works, but I had to modify the json file because the Product array just did not click for me
 
         // Set up the file
-        ClassLoader classLoader = Solution44.class.getClassLoader();
-        String pathToJson = classLoader.getResource(fileName).getPath();
-        Scanner in = new Scanner(pathToJson);
-
-//        File input = new File(ClassLoader.getSystemResource(fileInputName).getFile());
-//        Scanner in = new Scanner(input);
-
-//        String content = Files.readString(Path.of(System.getProperty("user.dir") + "/src/main/java/resources/" + fileName + "/"),
-//                StandardCharsets.US_ASCII);
+        File input = new File(ClassLoader.getSystemResource(fileName).getFile());
+        Scanner in = new Scanner(input);
 
         // Create arrayList
         ArrayList<Product> products = new ArrayList<>();
 
         // use gson.fromJson()
         Gson gson = new Gson();
-        String jsonText = "{'name': 'Widget', 'price': 25.00, 'quantity': 5 }";
 
-        // Use gson.fromJson to parse the darn Json file
-//        products.add(gson.fromJson(in.nextLine(), Product.class));
-//
-//        return products;
+        // Use gson.fromJson to parse this darn Json file
+        while(in.hasNextLine())
+            products.add(gson.fromJson(in.nextLine(), Product.class));
 
+        return products;
     }
 
-    public String getProductInfo(int index, ArrayList<Product> products) {
+    public String getProductInfo(int index, List<Product> products) {
 
         String output = "";
 
@@ -97,7 +96,7 @@ public class Solution44 {
 
     }
 
-    public int checkName(String name, ArrayList<Product> products) {
+    public int checkName(String name, List<Product> products) {
 
         // for loop through the entire products arraylist
         for(int i = 0; i < products.size(); i++)
