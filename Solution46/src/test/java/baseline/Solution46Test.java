@@ -3,6 +3,7 @@ package baseline;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -18,7 +19,7 @@ class Solution46Test {
     }
 
     @Test
-    void testReadFile() {
+    void testReadFile() throws FileNotFoundException {
 
         ArrayList<String> words = new ArrayList<>();
         words.add("badger");
@@ -35,14 +36,14 @@ class Solution46Test {
 
         words.add("badger");
 
-        ArrayList<String> Sol46Words = app.readFromFile("exercise46_input.txt");
+        ArrayList<String> Sol46Words = (ArrayList<String>) app.readFromFile("exercise46_input.txt");
 
         for(int i = 0; i < words.size(); i++)
             assertEquals(words.get(i), Sol46Words.get(i));
     }
 
     @Test
-    void testArrayListToHashMap() {
+    void testArrayListToHashMap() throws FileNotFoundException {
 
         HashMap<String, Integer> testValues = new HashMap<>();
 
@@ -56,7 +57,7 @@ class Solution46Test {
     }
 
     @Test
-    void testSortHashMap() {
+    void testGenerateTable() throws FileNotFoundException {
 
         HashMap<String, Integer> testValues = new HashMap<>();
 
@@ -67,26 +68,10 @@ class Solution46Test {
         app.readFromFile("exercise46_input.txt");
         app.arrayListToHashMap();
 
-        assertEquals(testValues, app.sortHashMap());
-
-    }
-
-    @Test
-    void testGenerateTable() {
-
-        HashMap<String, Integer> testValues = new HashMap<>();
-
-        testValues.put("badger", 7);
-        testValues.put("mushroom", 2);
-        testValues.put("snake", 1);
-
-        app.readFromFile("exercise46_input.txt");
-        app.arrayListToHashMap();
-        app.sortHashMap();
-
-        assertEquals("badger:   *******\n" +
-                "mushroom: **\n" +
-                "snake:    *", app.generateTable());
+        assertEquals("""
+                badger:   *******
+                mushroom: **
+                snake:    *""", app.generateTable());
 
     }
 
