@@ -1,0 +1,8 @@
+
+N	java:S106-"9Replace this use of System.out or System.err by a logger.(ÑžÔÚ
+N	java:S106L"9Replace this use of System.out or System.err by a logger.(Àûå 
+S	java:S106V"9Replace this use of System.out or System.err by a logger.(²Þ“æýÿÿÿÿ
+2
+java:S1643H"Use a StringBuilder instead.(î¥ü¸
+c
+java:S2095]"HUse try-with-resources or close this "FileWriter" in a "finally" clause.(ÐÞ”Šúÿÿÿÿ
